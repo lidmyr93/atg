@@ -51,5 +51,5 @@ export const ResultsSchema = z.array(ResultSchema);
 export const ProductsSchema = z.object({
   betType: BetTypeSchema,
   results: ResultsSchema,
-  upcoming: z.optional(UpcomingSchema),
+  upcoming: z.optional(z.array(UpcomingSchema)),
 });
