@@ -13,7 +13,7 @@ const getProducts = async (betType: BetType): Promise<Products> => {
     await ProductsSchema.parseAsync(data);
   } catch (e) {
     if (e instanceof z.ZodError) {
-      console.error("getProducts", e.issues);
+      console.warn("getProducts", e.issues);
     }
   }
 

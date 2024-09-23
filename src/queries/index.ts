@@ -1,5 +1,5 @@
 import { queryOptions } from "@tanstack/react-query";
-import { getProducts } from "@/api";
+import { getProducts, getGames } from "@/api";
 import type { BetType } from "@/api";
 
 export const getProductsQuery = (betType: BetType) =>
@@ -7,3 +7,6 @@ export const getProductsQuery = (betType: BetType) =>
     queryKey: ["products", betType],
     queryFn: () => getProducts(betType),
   });
+
+export const getGamesQuery = (id: string) =>
+  queryOptions({ queryKey: ["games", id], queryFn: () => getGames(id) });
