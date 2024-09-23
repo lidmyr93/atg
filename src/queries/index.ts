@@ -9,4 +9,8 @@ export const getProductsQuery = (betType: BetType) =>
   });
 
 export const getGamesQuery = (id: string) =>
-  queryOptions({ queryKey: ["games", id], queryFn: () => getGames(id) });
+  queryOptions({
+    queryKey: ["games", id],
+    queryFn: () => getGames(id),
+    enabled: !!id,
+  });
