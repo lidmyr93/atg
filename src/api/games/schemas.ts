@@ -31,7 +31,7 @@ export const GameHorseSchema = z.object({
   }),
 });
 
-export const StartSchema = z.object({
+export const GameStartSchema = z.object({
   id: z.string(),
   number: z.number(),
   postPosition: z.number(),
@@ -63,7 +63,7 @@ export const GameRaceSchema = z.object({
   status: z.string(),
   mediaId: z.string(),
   pools: z.unknown(),
-  starts: z.array(StartSchema),
+  starts: z.array(GameStartSchema),
   mergedPools: z.unknown(),
 });
 
