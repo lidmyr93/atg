@@ -26,3 +26,5 @@ instructions.md
 startlist.png
 **.json
 **/games/schemas
+tsconfig.app.tsbuildinfo
+tsconfig.node.tsbuildinfo
