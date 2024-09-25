@@ -1,5 +1,5 @@
 import { BetTypeSchema } from "@/api";
-import { Button, Select } from "@chakra-ui/react";
+import { Flex, Button, Select } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { BetTypeFormProps, FormData } from "./types";
@@ -16,11 +16,18 @@ const BetTypeForm = (props: BetTypeFormProps) => {
   });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <Flex
+      as="form"
+      onSubmit={handleSubmit(onSubmit)}
+      gap={2}
+      direction={"column"}
+      alignItems={"end"}
+    >
       <Select
         size={"lg"}
         {...register("betType")}
-        placeholder="Select bet type"
+        placeholder="Välj bet typ"
+        borderColor={"blue"}
       >
         {BetTypeSchema.options.map((option) => (
           <option value={option} key={option}>
@@ -28,10 +35,16 @@ const BetTypeForm = (props: BetTypeFormProps) => {
           </option>
         ))}
       </Select>
-      <Button type="submit" isDisabled={!isValid} colorScheme="blue">
-        Take me to the results !
+
+      <Button
+        type="submit"
+        isDisabled={!isValid}
+        colorScheme="blue"
+        size={"lg"}
+      >
+        Visa resultat
       </Button>
-    </form>
+    </Flex>
   );
 };
 
