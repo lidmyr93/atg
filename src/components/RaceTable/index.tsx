@@ -39,6 +39,7 @@ const RaceTable = (props: RaceTableProps) => {
           {data.map((race) => (
             <Fragment key={race.id}>
               <Tr
+                data-testid={race.id}
                 cursor={"pointer"}
                 onClick={() =>
                   setExpandedRow((prevState) =>

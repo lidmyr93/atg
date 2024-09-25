@@ -28,3 +28,7 @@ startlist.png
 **/games/schemas
 tsconfig.app.tsbuildinfo
 tsconfig.node.tsbuildinfo
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

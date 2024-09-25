@@ -22,3 +22,7 @@ npm run check-types
 ```bash
 npm run test:e2e
 ```
+
+#### Alternatively
+
+Check out [VS code extension for playwright](https://playwright.dev/docs/getting-started-vscode) for a better developer experience.

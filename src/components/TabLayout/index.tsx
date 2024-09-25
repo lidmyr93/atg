@@ -1,4 +1,12 @@
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import {
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+  Text,
+  Flex,
+} from "@chakra-ui/react";
 import RaceTable from "../RaceTable";
 
 import type { TabLayoutProps } from "./types";
@@ -10,8 +18,14 @@ const TabLayout = (props: TabLayoutProps) => {
       <TabList>
         {data.map(({ track, startTime }) => (
           <Tab key={track.id}>
-            {track.name} - {new Date(startTime).getHours()}:
-            {new Date(startTime).getMinutes()}{" "}
+            <Flex gap={2} data-testid={`track-info-${track.name}`}>
+              <Text as="b">{track.name}</Text>
+              <Text>-</Text>
+              <Text as="i">
+                {new Date(startTime).getHours()}:
+                {new Date(startTime).getMinutes()}{" "}
+              </Text>
+            </Flex>
           </Tab>
         ))}
       </TabList>
