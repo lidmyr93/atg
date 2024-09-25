@@ -14,9 +14,17 @@ export const GameDriverSchema = z.object({
     })
     .optional(),
 });
+
+export const PedigreeSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  nationality: z.string().optional(),
+});
+
 export const GameHorseSchema = z.object({
   id: z.number(),
   name: z.string(),
+  nationality: z.string().optional(),
   age: z.number(),
   sex: z.string(),
   record: z.object({
@@ -28,6 +36,28 @@ export const GameHorseSchema = z.object({
       seconds: z.number(),
       tenths: z.number(),
     }),
+  }),
+  trainer: z.object({
+    id: z.number(),
+    firstName: z.string(),
+    lastName: z.string(),
+    location: z.string(),
+    birth: z.number().optional(),
+    license: z.string(),
+    silks: z.string().optional(),
+  }),
+  money: z.number(),
+  color: z.string(),
+  foreignOwned: z.boolean().optional(),
+  shoes: z.unknown(),
+  sulky: z.unknown(),
+  owner: z.unknown(),
+  breeder: z.unknown(),
+  statistics: z.unknown(),
+  pedigree: z.object({
+    father: PedigreeSchema,
+    mother: PedigreeSchema,
+    grandfather: PedigreeSchema,
   }),
 });
 
