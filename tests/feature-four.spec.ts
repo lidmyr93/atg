@@ -1,31 +1,34 @@
 import { test, expect } from "@playwright/test";
+import v86Products from "./mock-data/v86/product";
+import v86Games from "./mock-data/v86/games";
 
 test("User should be able to expand and see detail information about a horse", async ({
   page,
 }) => {
+  await page.route("**/racinginfo/v1/api/products/*", async (route) => {
+    await route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify(v86Products),
+    });
+  });
+  await page.route("**/racinginfo/v1/api/games/*", async (route) => {
+    await route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify(v86Games),
+    });
+  });
+
   await page.goto("/v86");
-  await page.getByTestId("2024-09-18_5_7").click();
-  await page.getByTestId("778382").click();
 
-  const data = [
-    {
-      id: "778382",
-      trainer: "Daniel Wäjersten",
-      father: "Googoo Gaagaa",
-    },
-    {
-      id: "778677",
-      trainer: "Staffan Lind",
-      father: "Tobin Kronos",
-    },
-  ];
-
-  for (let i = 0; i < data.length; i++) {
-    await expect(page.getByTestId(`${data[i].id}-trainer`)).toHaveText(
-      data[i].trainer
-    );
-    await expect(page.getByTestId(`${data[i].id}-father`)).toHaveText(
-      data[i].father
-    );
-  }
+  const data = v86Games.races[1];
+  await page.getByTestId(data.id).click();
+  await page.getByTestId(data.starts[1].horse.id + "").click();
+  await expect(
+    page.getByTestId(`${data.starts[1].horse.id}-trainer`)
+  ).toHaveText(
+    `${data.starts[1].horse.trainer.firstName}  ${data.starts[1].horse.trainer.lastName}`
+  );
+  await expect(
+    page.getByTestId(`${data.starts[1].horse.id}-father`)
+  ).toHaveText(data.starts[1].horse.pedigree.father.name);
 });

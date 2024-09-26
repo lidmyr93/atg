@@ -103,7 +103,7 @@ export const GamesSchema = z.object({
   status: z.string(),
   pools: z.unknown(),
   races: z.array(GameRaceSchema),
-  currentVersion: z.number(),
+  currentVersion: z.number().optional(),
   newBettingSystem: z.boolean(),
   type: z.unknown(),
 });

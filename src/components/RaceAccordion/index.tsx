@@ -18,7 +18,7 @@ const RaceAccordion = (props: RaceAccordionProps) => {
         return (
           <AccordionItem key={race.id}>
             <h3>
-              <AccordionButton>
+              <AccordionButton data-testid={race.id}>
                 <Grid
                   templateColumns={"40px auto 30px 30px"}
                   gap={2}
@@ -43,6 +43,7 @@ const RaceAccordion = (props: RaceAccordionProps) => {
                   horse={horse}
                   driver={driver}
                   data-testid={id}
+                  key={id}
                 />
               ))}
             </AccordionPanel>
