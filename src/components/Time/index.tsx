@@ -1,6 +1,7 @@
 import { Text } from "@chakra-ui/react";
+import type { TextProps } from "@chakra-ui/react";
 
-type TimeProps = {
+type TimeProps = TextProps & {
   startTime: string;
 };
 

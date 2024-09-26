@@ -1,40 +1,57 @@
-import { Box, Collapse, Flex, IconButton, Text } from "@chakra-ui/react";
+import {
+  Badge,
+  Box,
+  Collapse,
+  Divider,
+  Flex,
+  Grid,
+  Text,
+} from "@chakra-ui/react";
 
 import { DetailInformationRowProps } from "./types";
 import { useState } from "react";
-import { ArrowUpIcon, ArrowDownIcon } from "@chakra-ui/icons";
 
 const DetailInformationRow = (props: DetailInformationRowProps) => {
-  const { horse, postPosition, driver } = props;
+  const { horse, postPosition, driver, ...rest } = props;
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <Flex flexDir={"column"} gap={2} my={2}>
-      <Flex
-        gap={2}
+    <Flex flexDir={"column"} gap={2} my={2} {...rest} width={"50%"}>
+      <Grid
         cursor={"pointer"}
+        templateColumns={"40px 200px auto"}
+        _hover={{
+          background: "gray.50",
+        }}
         onClick={() => {
           setIsExpanded((prevState) => !prevState);
         }}
         data-testid={horse.id}
+        alignItems={"center"}
       >
-        <Text data-testid={`${horse.id}-postPosition`}>{postPosition}</Text>
-        <Text as="b" data-testid={`${horse.id}-name`}>
+        <Badge
+          colorScheme="blue"
+          borderRadius={"full"}
+          textAlign={"center"}
+          w="20px"
+          height="20px"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          data-testid={`${horse.id}-postPosition`}
+        >
+          {postPosition}
+        </Badge>
+
+        <Text as="b" data-testid={`${horse.id}-name`} noOfLines={1}>
           {horse.name}
         </Text>
-        <Text as="i" data-testid={`${horse.id}-driver`}>
+        <Text as="i" data-testid={`${horse.id}-driver`} justifySelf={"start"}>
           {driver.firstName} {driver.lastName}
         </Text>
-
-        <IconButton
-          ml={2}
-          size="xs"
-          aria-label="expand"
-          icon={isExpanded ? <ArrowUpIcon /> : <ArrowDownIcon />}
-        />
-      </Flex>
+      </Grid>
       <Collapse in={isExpanded}>
-        <Box pl={6}>
+        <Box ml={"40px"}>
           <Flex gap="2">
             <Text as="b">Tränare: </Text>
             <Text data-testid={`${horse.id}-trainer`}>
@@ -49,6 +66,7 @@ const DetailInformationRow = (props: DetailInformationRowProps) => {
           </Flex>
         </Box>
       </Collapse>
+      <Divider />
     </Flex>
   );
 };

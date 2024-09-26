@@ -7,10 +7,10 @@ import {
   Text,
   Flex,
 } from "@chakra-ui/react";
-import RaceTable from "../RaceTable";
 
 import type { TabLayoutProps } from "./types";
 import Time from "../Time";
+import RaceAccordion from "../RaceAccordion";
 
 const TabLayout = (props: TabLayoutProps) => {
   const { data } = props;
@@ -33,7 +33,7 @@ const TabLayout = (props: TabLayoutProps) => {
       <TabPanels>
         {data.map(({ track, races }) => (
           <TabPanel key={track.id}>
-            <RaceTable data={races} />
+            <RaceAccordion data={races} />
           </TabPanel>
         ))}
       </TabPanels>
