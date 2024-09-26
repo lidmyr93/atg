@@ -1,6 +1,7 @@
 import { BetType, BetTypeSchema } from "@/api";
+import ErrorComponent from "@/components/ErrorComponent";
 import { getProductsQuery } from "@/queries";
-import { createFileRoute, redirect } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/$betType")({
   params: {
@@ -19,7 +20,6 @@ export const Route = createFileRoute("/$betType")({
   loader: ({ context: { queryClient }, params: { betType } }) => {
     queryClient.ensureQueryData(getProductsQuery(betType));
   },
-  onError: () => {
-    throw redirect({ to: "/" });
-  },
+
+  errorComponent: ErrorComponent,
 });
