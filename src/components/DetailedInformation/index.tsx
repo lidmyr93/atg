@@ -1,11 +1,4 @@
-import {
-  Box,
-  Collapse,
-  Divider,
-  Flex,
-  IconButton,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Collapse, Flex, IconButton, Text } from "@chakra-ui/react";
 
 import { DetailInformationRowProps } from "./types";
 import { useState } from "react";
@@ -26,12 +19,15 @@ const DetailInformationRow = (props: DetailInformationRowProps) => {
         data-testid={horse.id}
       >
         <Text data-testid={`${horse.id}-postPosition`}>{postPosition}</Text>
-        <Text data-testid={`${horse.id}-name`}>{horse.name}</Text>
-        <Text data-testid={`${horse.id}-driver`}>
+        <Text as="b" data-testid={`${horse.id}-name`}>
+          {horse.name}
+        </Text>
+        <Text as="i" data-testid={`${horse.id}-driver`}>
           {driver.firstName} {driver.lastName}
         </Text>
 
         <IconButton
+          ml={2}
           size="xs"
           aria-label="expand"
           icon={isExpanded ? <ArrowUpIcon /> : <ArrowDownIcon />}
@@ -46,14 +42,13 @@ const DetailInformationRow = (props: DetailInformationRowProps) => {
             </Text>
           </Flex>
           <Flex gap="2">
-            <Text as="b">Far </Text>
+            <Text as="b">Far: </Text>
             <Text data-testid={`${horse.id}-father`}>
               {horse.pedigree.father.name}
             </Text>
           </Flex>
         </Box>
       </Collapse>
-      <Divider />
     </Flex>
   );
 };

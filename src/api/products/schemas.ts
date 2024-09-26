@@ -33,7 +33,7 @@ export const UpcomingSchema = z.object({
   tracks: z.array(TrackSchema),
   favorites: z.array(FavoriteSchema),
   races: z.array(RaceSchema),
-  bettable: z.boolean(),
+  bettable: z.boolean().optional(),
 });
 
 export const ResultSchema = z.object({

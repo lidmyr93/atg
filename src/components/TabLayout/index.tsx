@@ -10,6 +10,7 @@ import {
 import RaceTable from "../RaceTable";
 
 import type { TabLayoutProps } from "./types";
+import Time from "../Time";
 
 const TabLayout = (props: TabLayoutProps) => {
   const { data } = props;
@@ -22,8 +23,7 @@ const TabLayout = (props: TabLayoutProps) => {
               <Text as="b">{track.name}</Text>
               <Text>-</Text>
               <Text as="i">
-                {new Date(startTime).getHours()}:
-                {new Date(startTime).getMinutes()}{" "}
+                <Time startTime={startTime} />
               </Text>
             </Flex>
           </Tab>

@@ -5,7 +5,11 @@ import AtgIcon from "@assets/atg.svg";
 
 type Context = { queryClient: QueryClient };
 export const Route = createRootRouteWithContext<Context>()({
-  component: () => (
+  component: RootComponent,
+});
+
+function RootComponent() {
+  return (
     <Flex direction="column" h="100vh" overflow="hidden">
       <Center as="header" bg={"blue"} p={4} w="100%">
         <Box width={100}>
@@ -25,5 +29,5 @@ export const Route = createRootRouteWithContext<Context>()({
         <Outlet />
       </Container>
     </Flex>
-  ),
-});
+  );
+}

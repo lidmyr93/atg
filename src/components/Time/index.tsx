@@ -1,4 +1,5 @@
 import { Text } from "@chakra-ui/react";
+
 type TimeProps = {
   startTime: string;
 };
@@ -9,12 +10,14 @@ const timeFormatter = new Intl.DateTimeFormat("sv-SE", {
 });
 
 const Time = (props: TimeProps) => {
-  const { startTime } = props;
+  const { startTime, ...rest } = props;
   const date = new Date(startTime);
 
   const isValidDate = !isNaN(date.getTime());
   return (
-    <Text>{isValidDate ? timeFormatter.format(date) : "Ingen startid"}</Text>
+    <Text {...rest}>
+      {isValidDate ? timeFormatter.format(date) : "Ingen startid"}
+    </Text>
   );
 };
 
