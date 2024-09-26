@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
-import v86Products from "./mock-data/v86/product";
-import v86Games from "./mock-data/v86/games";
+import v86Products from "../mock-data/v86/product";
+import v86Games from "../mock-data/v86/games";
 
 test("User should be able to expand and see detail information about a horse", async ({
   page,
