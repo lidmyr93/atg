@@ -28,7 +28,12 @@ const RaceAccordion = (props: RaceAccordionProps) => {
                   <Text as="b" justifySelf={"start"}>
                     # {race.number}
                   </Text>
-                  <Text as={"i"} justifySelf={"start"} noOfLines={1}>
+                  <Text
+                    as={"i"}
+                    justifySelf={"start"}
+                    noOfLines={1}
+                    textAlign={"left"}
+                  >
                     {race.name || "Inget namn"}
                   </Text>
                   <Time startTime={race.startTime} justifySelf={"end"} />
@@ -36,7 +41,7 @@ const RaceAccordion = (props: RaceAccordionProps) => {
                 </Grid>
               </AccordionButton>
             </h3>
-            <AccordionPanel marginLeft={"40px"}>
+            <AccordionPanel marginLeft={[0, "40px"]}>
               {race.starts.map(({ horse, postPosition, driver, id }) => (
                 <DetailInformationRow
                   postPosition={postPosition}

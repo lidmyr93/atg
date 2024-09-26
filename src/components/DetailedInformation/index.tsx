@@ -1,12 +1,4 @@
-import {
-  Badge,
-  Box,
-  Collapse,
-  Divider,
-  Flex,
-  Grid,
-  Text,
-} from "@chakra-ui/react";
+import { Badge, Box, Collapse, Divider, Flex, Text } from "@chakra-ui/react";
 
 import { DetailInformationRowProps } from "./types";
 import { useState } from "react";
@@ -16,10 +8,17 @@ const DetailInformationRow = (props: DetailInformationRowProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <Flex flexDir={"column"} gap={2} my={2} {...rest} width={"50%"}>
-      <Grid
+    <Flex
+      flexDir={"column"}
+      gap={2}
+      my={2}
+      {...rest}
+      width={["100%", "100%", "100%%"]}
+    >
+      <Flex
         cursor={"pointer"}
-        templateColumns={"40px 200px auto"}
+        wrap={"wrap"}
+        gap={2}
         _hover={{
           background: "gray.50",
         }}
@@ -49,9 +48,9 @@ const DetailInformationRow = (props: DetailInformationRowProps) => {
         <Text as="i" data-testid={`${horse.id}-driver`} justifySelf={"start"}>
           {driver.firstName} {driver.lastName}
         </Text>
-      </Grid>
+      </Flex>
       <Collapse in={isExpanded}>
-        <Box ml={"40px"}>
+        <Box ml={[0, 0, "20px"]}>
           <Flex gap="2">
             <Text as="b">Tränare: </Text>
             <Text data-testid={`${horse.id}-trainer`}>

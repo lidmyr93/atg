@@ -48,7 +48,15 @@ function BetType() {
 
   return (
     <Box width={"100%"}>
-      <Flex alignItems={"center"} justifyContent={"space-between"} mb={12}>
+      <Flex
+        alignItems={"center"}
+        justifyContent={["center", "space-between"]}
+        mb={12}
+        wrap={"wrap"}
+        gap={[6, 0]}
+      >
+        <Box w={98} display={["none", "initial"]} />
+        <Heading>Resultat av: {betType}</Heading>
         <Button
           aria-label="navigates back"
           leftIcon={<ArrowBackIcon />}
@@ -58,8 +66,6 @@ function BetType() {
         >
           Tillbaka
         </Button>
-        <Heading>Resultat av: {betType}</Heading>
-        <Box w={98} />
       </Flex>
 
       <TabLayout data={tracksWithRaces} />
